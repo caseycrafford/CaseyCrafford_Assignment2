@@ -12,7 +12,8 @@ package za.ac.cput.Asssignment2;
  *  16  May 2021
  */
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class App
 {
@@ -26,38 +27,115 @@ public class App
     public static void main( String[] args ) {
         List();
         Set();
+        Map();
+        Collection();
     }
 
     public static void List(){
-        ArrayList customerList = new ArrayList();
+        ArrayList customerVisitList = new ArrayList();
 
-        customerList.add(p2);
-        customerList.add(p3);
-        customerList.add(p5);
-        customerList.add(p4);
-        customerList.add(p5);
-        customerList.add(0,p1);
-        customerList.add(pE);
+        customerVisitList.add(p2);
+        customerVisitList.add(p3);
+        customerVisitList.add(p5);
+        customerVisitList.add(p4);
+        customerVisitList.add(p5);
+        customerVisitList.add(0,p1);
+        customerVisitList.add(pE);
 
-        customerList.remove(3);
-        customerList.remove(pE);
+        customerVisitList.remove(3);
+        customerVisitList.remove(pE);
 
-        System.out.println("USING LIST\n**************");
-        System.out.println(customerList);
+        System.out.println("****************************\nUSING LIST\n****************************");
+        System.out.println(customerVisitList);
 
+        System.out.println("------------------------------");
         System.out.println("Is Ivana in the list? : ");
-        if(customerList.contains(p4))
-            System.out.println(p4.getName()+" was found");
+        if(customerVisitList.contains(p4))
+            System.out.println(p4.getName()+" was found.");
 
-        for (int i =0;i<customerList.size();i++){
-            if (((Customer)customerList.get(i)).getName().equals("Benjamin Franklin"))
-                System.out.println("Benjamin was  found");
-            else if(i==(customerList.size()-1))
-                System.out.println("Benjamin was not found");
+        System.out.println("------------------------------");
+        System.out.println("Is Benjamin in the list?: ");
+        for (int i =0;i<customerVisitList.size();i++){
+            if (((Customer)customerVisitList.get(i)).getName().equals("Benjamin Franklin")) {
+                System.out.println("Benjamin was found.");
+                break;
+            }
+            else if(i==(customerVisitList.size()-1))
+                System.out.println("Benjamin was not found.");
         }
+        System.out.println("------------------------------");
     }
 
     public static void Set(){
-        System.out.println("USING LIST\n**************");
+        Set customerSet=new HashSet();
+
+        customerSet.add(p1);
+        customerSet.add(p2);
+        customerSet.add(p3);
+        customerSet.add(p4);
+        customerSet.add(p5);
+        customerSet.add(pE);
+
+        customerSet.remove(pE);
+
+        System.out.println("****************************\nUSING SET\n****************************");
+        System.out.println(customerSet);
+
+        System.out.println("------------------------------");
+        System.out.println("Is Al in the set?: ");
+        if(customerSet.contains(p3))
+            System.out.println(p3.getName()+" is in the set.");
+        System.out.println("------------------------------");
+    }
+
+    public static void Map(){
+        Map customerMap = new HashMap();
+
+        customerMap.put(p1.getId(),p1);
+        customerMap.put(p2.getId(),p2);
+        customerMap.put(p3.getId(),p3);
+        customerMap.put(p4.getId(),p4);
+        customerMap.put(p5.getId(),p5);
+        customerMap.put(pE.getId(),pE);
+
+        customerMap.remove(pE.getId());
+
+        System.out.println("****************************\nUSING MAP\n****************************");
+        System.out.println(customerMap);
+
+        System.out.println("------------------------------");
+        System.out.println("Is Joana in the hashmap?");
+        customerMap.forEach((k,v) ->  {
+            if((((Customer)v).getName()).equals("Joana Smith"))
+                System.out.println("Joana is in the hashmap.");
+        });
+        System.out.println("------------------------------");
+
+        System.out.println("Is Casey in the hashmap?:");
+        if(customerMap.containsValue(p1))
+            System.out.println(p1.getName()+" is in the hashmap.");
+        System.out.println("------------------------------");
+    }
+
+    public static void Collection(){
+        Collection <Customer> customerCollection=new HashSet();
+
+        customerCollection.add(p1);
+        customerCollection.add(p2);
+        customerCollection.add(p3);
+        customerCollection.add(p4);
+        customerCollection.add(p5);
+        customerCollection.add(pE);
+
+        customerCollection.remove(pE);
+
+        System.out.println("****************************\nUSING GENERIC  COLLECTION\n****************************");
+        System.out.println(customerCollection);
+
+        System.out.println("------------------------------");
+        System.out.println("Is Al in the set?: ");
+        if(customerCollection.contains(p3))
+            System.out.println(p3.getName()+" is in the set.");
+        System.out.println("------------------------------");
     }
 }
