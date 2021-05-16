@@ -6,6 +6,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
+
     @Test
     void listAddTest(){
         List<Customer> customerList=new ArrayList();
