@@ -13,6 +13,7 @@ package za.ac.cput.Asssignment2;
  */
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class App
@@ -90,6 +91,7 @@ public class App
 
     public static void Map(){
         Map customerMap = new HashMap();
+        AtomicInteger notfound= new AtomicInteger();
 
         customerMap.put(p1.getId(),p1);
         customerMap.put(p2.getId(),p2);
@@ -104,11 +106,17 @@ public class App
         System.out.println(customerMap);
 
         System.out.println("------------------------------");
+
         System.out.println("Is Joana in the hashmap?");
         customerMap.forEach((k,v) ->  {
             if((((Customer)v).getName()).equals("Joana Smith"))
                 System.out.println("Joana is in the hashmap.");
+            else
+                notfound.getAndIncrement();
         });
+        if(notfound.get()==customerMap.size())
+            System.out.println("Not found.");
+
         System.out.println("------------------------------");
 
         System.out.println("Is Casey in the hashmap?:");
@@ -119,7 +127,7 @@ public class App
 
     public static void Collection(){
         Collection <Customer> customerCollection=new HashSet();
-
+        AtomicInteger notfound= new AtomicInteger();
         customerCollection.add(p1);
         customerCollection.add(p2);
         customerCollection.add(p3);
@@ -133,9 +141,21 @@ public class App
         System.out.println(customerCollection);
 
         System.out.println("------------------------------");
-        System.out.println("Is Al in the set?: ");
+        System.out.println("Is Al in the collection?: ");
         if(customerCollection.contains(p3))
-            System.out.println(p3.getName()+" is in the set.");
+            System.out.println(p3.getName()+" is in the collection.");
+
+        System.out.println("------------------------------");
+
+        System.out.println("Is Benjamin in the collection?:");
+        customerCollection.forEach((v) ->  {
+            if(((v).getName()).equals("Benjamin Franklin"))
+                System.out.println("Benjamin Franklin is in the collection.");
+            else
+                notfound.getAndIncrement();
+        });
+        if(notfound.get()==customerCollection.size())
+            System.out.println("Not found.");
         System.out.println("------------------------------");
     }
 }

@@ -1,5 +1,7 @@
 package za.ac.cput.Asssignment2;
 
+import java.util.Objects;
+
 /**
  *  ADP372S: Assignment 2
  *  Create a maven application using TDD to show your understanding of the following Java Collection interfaces:
@@ -18,6 +20,10 @@ public class Customer {
 
     public Customer() {
 
+    }
+
+    public Customer(int id) {
+        this.id = id;
     }
 
     public Customer(int id, String name, String gender) {
@@ -53,5 +59,18 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer: (ID: "+id+" , Name: "+name+" , Gender: "+gender+")\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
