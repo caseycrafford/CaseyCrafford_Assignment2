@@ -52,17 +52,17 @@ public class App
         System.out.println("------------------------------");
         System.out.println("Is Ivana in the list? : ");
         if(customerVisitList.contains(p4))
-            System.out.println(p4.getName()+" was found.");
+            System.out.println(p4.getName()+" is in the  list.");
 
         System.out.println("------------------------------");
         System.out.println("Is Benjamin in the list?: ");
         for (int i =0;i<customerVisitList.size();i++){
             if (((Customer)customerVisitList.get(i)).getName().equals("Benjamin Franklin")) {
-                System.out.println("Benjamin was found.");
+                System.out.println("Benjamin is in the list.");
                 break;
             }
             else if(i==(customerVisitList.size()-1))
-                System.out.println("Benjamin was not found.");
+                System.out.println("Benjamin is not in the list.");
         }
         System.out.println("------------------------------");
     }
